@@ -1,0 +1,36 @@
+services:
+  videohub:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    image: videohub
+    container_name: videohub
+    restart: always
+    env_file:
+      - .env
+    links:
+      - "postgres:${POSTGRES_DEFAULT_HOST}"
+    networks:
+      - backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:17-alpine
+    container_name: psgr
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DEFAULT_DB}
+      - POSTGRES_USER=${POSTGRES_DEFAULT_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_DEFAULT_PASSWORD}
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres-data:

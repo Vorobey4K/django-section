@@ -1,0 +1,31 @@
+# ===== IDE =====
+.idea/
+.vscode/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ===== virtual env =====
+venv/
+.venv/
+
+# ===== testing =====
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ===== type checker =====
+.mypy_cache/
+
+# ===== linter / formatter =====
+.ruff_cache/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== logs =====
+*.log

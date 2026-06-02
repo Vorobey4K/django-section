@@ -1,0 +1,13 @@
+[tool.mypy]
+# Подключаем плагин для корректной работы типов Django
+plugins = ["mypy_django_plugin.main"]
+
+# Отключаем проверку типов для папки миграций
+[[tool.mypy.overrides]]
+module = "*.migrations.*"
+ignore_errors = true
+
+# Игнорируем отсутствие типов у django-environ
+[[tool.mypy.overrides]]
+module = "environ.*"
+ignore_missing_imports = true
